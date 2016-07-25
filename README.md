@@ -1,4 +1,4 @@
-# Jeong Lim's personal site
+# My personal site
 
 Made using react / redux
 ~
