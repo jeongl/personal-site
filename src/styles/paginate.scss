@@ -1,0 +1,19 @@
+#react-paginate {
+	ul {
+    display: inline-block;
+	}		
+}
+
+#react-paginate li {
+  display: inline-block;
+  padding: 1em;
+  cursor: pointer;
+	:hover {
+		color: grey;
+		border-radius: 5px;
+	}    
+}
+
+#react-paginate .break a {
+    cursor: pointer;
+}

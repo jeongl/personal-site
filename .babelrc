@@ -4,6 +4,7 @@
     "react",
     "stage-1"
   ],
+  "sourceMaps" : false,
   "env": {
     "development": {
       "presets": [

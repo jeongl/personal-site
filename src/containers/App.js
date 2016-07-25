@@ -1,39 +1,36 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router';
 import '../styles/main.scss';
-import AboutPage from '../components/AboutPage.js';
+import '../styles/burger-menu.scss';
+import '../styles/image-gallery-main-styles.scss';
+import Gallery from '../components/Gallery.js';
 
 class App extends Component {
-  constructor(props){
+  constructor(props){ 
     super(props);
   }
-
   render() {
+    let style = {paddingLeft: '.7em'}
     return (
       <div className="parent">
         <div className="row">
           <div className="three columns offset-by-one parent__name"><h2>Jeong Lim</h2></div>
-          <div className="one column offset-by-two parent__link"><a href="">PORTFOLIO</a></div>
-          <div className="one column parent__link"><a href="">BLOG</a></div>
-          <div className="one column parent__link"><a href="">LINKEDIN</a></div>
-          <div className="one column parent__link"><a href="">ABOUT</a></div>
+          <div className="one column offset-by-four parent__link"><Link to="/portfolio">Portfolio</Link></div>
+          <div className="one column parent__link" style={style}><Link to="/blog">Blog</Link></div>
+          <div className="one column parent__link"><a target="blank" href="https://www.linkedin.com/in/jeonglim">Linkedin</a></div>
+          <div className="one column parent__link"><a href="">About</a></div>
         </div>
         <div className="row">
-          <div className="two columns offset-by-one"><h6>Javascript developer from seattle</h6></div>
+          <div className="three columns offset-by-one parent__desc"><h6>Javascript developer from Seattle</h6></div>
         </div>
-        <AboutPage></AboutPage>
-        {false && this.props.children}
+        <div className="row gallery">
+          <Gallery />
+        </div>
       </div>
-    )
+    );
   }
-
 }
 
-App.propTypes = {}
-
-function mapStateToProps(state){
-  return { test: 'test property' }
-}
-
-export default connect(mapStateToProps, {})(App)
+function mapStateToProps(state){return {};}
+export default connect(mapStateToProps, {})(App);

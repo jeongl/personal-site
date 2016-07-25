@@ -33,6 +33,7 @@ export default {
     })
   ],
   module: {
+    noParse: /node_modules\/quill\/dist/,
     loaders: [
       {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
       {test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file'},

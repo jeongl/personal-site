@@ -1,0 +1,40 @@
+.page-wrap--heading {
+	padding-top: .4em;
+	padding-left: 2.5em;
+}
+
+.titles {
+	color: #1EAEDB;
+}
+
+.page-wrap__date {
+	padding: 1.3em;
+}
+
+.code {
+	padding-right: 0;
+}
+.ten.columns.code {
+	margin-left: 7em;
+	& p, strong {
+		margin-left: 2em;
+	}
+	& u {
+		margin-top: 2em;
+	}
+}
+
+.ten.columns.img {
+	margin-left: 8.5em;
+	& p, strong {
+		margin-left: 2em;
+	}
+	& u {
+		margin-top: 2em;
+	}
+}
+
+.underline {
+	text-decoration: none;
+	border-bottom: 1px solid #dddddd;
+}

@@ -3,15 +3,17 @@
 // With Redux, the actual stores are in /reducers.
 
 import {createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk'
-import createLogger from 'redux-logger'
+import thunk from 'redux-thunk';
+import api from '../middleware/api.js';
+import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer, 
-    initialState, compose(
-      applyMiddleware(thunk, createLogger()),
+    initialState, 
+    compose(
+      applyMiddleware(thunk, api, createLogger()),
       window.devToolsExtension ? window.devToolsExtension() : f => f 
     )
   );
