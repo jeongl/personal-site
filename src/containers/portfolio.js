@@ -18,7 +18,7 @@ class App extends Component {
               <h1 className="page-wrap--heading">Projects</h1>
             </div>
             <div className="row project-row">
-              <p><em><a target="blank" href="http://jlim.site">This project site - code repo</a></em></p>
+              <p><em><a target="blank" href="https://github.com/jeongl/personal-site">This project site - code repo</a></em></p>
               <ul>
                 <li>React / redux front end</li>
                 <li>Node.js mock backend</li>
