@@ -38,10 +38,14 @@ export default store => next => action => {
         } else {
           next({
             type: action.type,
+            val: 0,
             posts: mergeCustomAndSaved(action.customPosts, posts)
           });
+          store.dispatch({ type: 'CHANGE_POST' })
         }
-      }).catch(err => console.log("Error: ", err));
+
+      })
+      .catch(err => console.log("Error: ", err));
 
   } else {
     return next(action);

@@ -5,6 +5,7 @@
 import {createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import api from '../middleware/api.js';
+import findPost from '../middleware/findPost.js';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
 
@@ -13,7 +14,7 @@ export default function configureStore(initialState) {
     rootReducer, 
     initialState, 
     compose(
-      applyMiddleware(thunk, api, createLogger()),
+      applyMiddleware(thunk, api, findPost, createLogger()),
       window.devToolsExtension ? window.devToolsExtension() : f => f 
     )
   );

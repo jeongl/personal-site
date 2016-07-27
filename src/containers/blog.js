@@ -7,7 +7,8 @@ import '../styles/blog.scss';
 import '../styles/paginate.scss';
 import { 
   fetchPostsAndMergeCustom, 
-  updateDisplayedPost 
+  updateDisplayedPost,
+  changePost
 } from '../actions/index.js';
 import Scroll from 'react-scroll';
 import ReactPaginate from 'react-paginate';
@@ -21,26 +22,26 @@ class Blog extends Component {
 
   componentDidMount(){
     let customPosts = [<ReducePost />];
-    this.props.fetchPostsAndMergeCustom(customPosts);
+    this.props.fetchPostsAndMergeCustom(customPosts)
+    var self = this;
   }
 
   getPost() {
-    let { posts: {posts:posts} } = this.props;
-    let selectedIndex = this.props.posts.val;
-    if (typeof posts === 'undefined' || posts.length <= 0 ) return false;
-
-    if ( posts[selectedIndex].type === 'custom' ){
-      return (posts[selectedIndex].original);
-    } else if ( posts[selectedIndex].type === 'db' ) return (
+    let currentPost = this.props.posts.currentPost;
+    if ( typeof currentPost === 'undefined' || currentPost.length <=0 ) return false;
+    if ( currentPost.type === 'custom' ){
+      return (currentPost.original);
+    } else if ( currentPost.type === 'db' ) return (
       <RenderPost 
-        html={posts[selectedIndex].original.html}
-        postTitle={posts[selectedIndex].postTitle}
-        postDate={posts[selectedIndex].postDate}/>
+        html={currentPost.original.html}
+        postTitle={currentPost.postTitle}
+        postDate={currentPost.postDate}/>
     );
   }
 
   handlePageClick(val) {
     this.props.updateDisplayedPost(val.selected);
+    this.props.changePost();
     scroll.scrollToTop({duration:10});
   }
 
@@ -83,5 +84,6 @@ function mapStateToProps(state) {
 
 export default connect( mapStateToProps, {
   fetchPostsAndMergeCustom,
-  updateDisplayedPost
+  updateDisplayedPost,
+  changePost
 })(Blog);

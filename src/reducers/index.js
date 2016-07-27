@@ -38,6 +38,7 @@ function posts(state = {
 	isFetching: false,
 	anotherProperty: false,
 	posts: [],
+	currentPost: {},
 	text: '<p style="color: grey; font-size: 150px">hello, world!</p>'
 }, action) {
 	switch(action.type) {
@@ -54,6 +55,11 @@ function posts(state = {
 			return {...state,
 				val: action.val || 0,
 				posts: action.posts
+			};
+		case 'CHANGE_POST':
+			return {...state,
+				val: action.val || 0,
+				currentPost: action.currentPost
 			};			
 		case 'CREATE_POST':
 			return {...state,

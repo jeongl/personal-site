@@ -19,6 +19,12 @@ export function fetchPostsAndMergeCustom(customPosts) {
   };
 }
 
+export function changePost() {
+  return {
+    type: 'CHANGE_POST'
+  };
+}
+
 export function createPost(text) {
   return {
     type: 'CREATE_POST',

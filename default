@@ -1,0 +1,29 @@
+server {
+  listen       80;
+  server_name  jlim.site;
+
+  location / {
+    proxy_pass http://localhost:3008;
+  }
+
+  location /home {
+    alias /app/jeongs-personal-site/dist;
+  }
+
+  location /cats {
+    alias /app/InstaCats/src/main;
+    index index.html index.htm;
+  }
+
+  location /images {
+    alias /app/pics;
+  }
+
+  location /blogPosts {
+    proxy_pass http://localhost:3008;
+  }
+
+  location /scrape {
+    proxy_pass http://localhost:8081;
+  }
+}f
