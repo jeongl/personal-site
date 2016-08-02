@@ -32,5 +32,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state){return {};}
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+    posts: state.posts,
+    socket: state.socket
+  };
+}
 export default connect(mapStateToProps, {})(App);

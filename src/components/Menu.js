@@ -13,6 +13,7 @@ class MenuComponent extends React.Component {
         <RadiumLink className="menu-item" to="/">Home</RadiumLink>
         <RadiumLink className="menu-item" to="/portfolio">Portfolio</RadiumLink>
         <RadiumLink className="menu-item" to="/blog">Blog</RadiumLink>
+        <RadiumLink className="menu-item" to="/analytics">Analytics</RadiumLink>
         <RadiumLink className="menu-item" to="/blanktemplate">create post (in progress)</RadiumLink>
       </Menu>
     )

@@ -31,3 +31,11 @@ export function createPost(text) {
     text
   };
 }
+
+export function socketMessage(data) {
+  return {
+    type: 'RECEIVE_SOCKET_MESSAGE',
+    count: JSON.parse(data).count,
+    ipList: JSON.parse(data).ipList
+  }
+}

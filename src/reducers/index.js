@@ -70,9 +70,26 @@ function posts(state = {
 	}
 }
 
+function socket(state = {
+	text: null,
+	count: 0,
+	ipList: []
+}, action) {
+	switch(action.type) {
+		case 'RECEIVE_SOCKET_MESSAGE': 
+			return { ...state,
+				count: action.count,
+				ipList: action.ipList
+			}
+		default:
+			return state;
+	}
+}
+
 const rootReducer = combineReducers({
   auth,
   posts,
+  socket,
   routing: routerReducer
 });
 
