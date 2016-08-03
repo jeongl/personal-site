@@ -9,13 +9,21 @@ class Analytics extends Component {
     super(props);
   }
 
-  componentDidMount(){}
+  browserSniff(desc, item) {
+    if ( desc !== 'user-agent' ) return item;
+    
+    return [{test: /chrome/ig, type: 'Most likely chrome'}, 
+      {test: /firefox/ig, type: 'Most likely firefox'},
+      {test: /opera/ig, type: 'Most likely opera.'},
+      {test: /a/ig, type: 'Some other browser.'}]
+      .filter(sniff => item.match(sniff.test))[0].type;
+  }
 
   personList(item, i){
     return (
       <ul>
         <span><u><b>User {i + 1}</b></u></span>
-        {_.map(item, (item, desc) => <li>{desc} - {item} </li>)}
+        {_.map(item, (item, desc) => <li>{desc} - {this.browserSniff(desc, item)} </li>)}
       </ul>
     )
   }
@@ -28,7 +36,7 @@ class Analytics extends Component {
           <p className="notice">*real time data</p>
           {this.props.socket.ipList.map((item, i, b) => {
             return this.personList(
-              _.pick(item, ['ip', 'city', 'loc', 'country' ]), i)
+              _.pick(item, ['user-agent', 'guid']), i)
           })}
         </div>
       </div>

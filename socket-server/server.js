@@ -47,8 +47,12 @@ function req(ip){
   });
 }
 
+function getAllUserData(){
+  return wss.clients.map(client => client.upgradeReq.headers);
+}
+
 function getConnectDetails(){
-  let allUserData = wss.clients.map(client => client.upgradeReq.headers)  
+  let allUserData = wss.clients.map(client => client.upgradeReq.headers);
   let justIps = allUserData.map(item =>  req(item.host) );
 
   return new Promise((resolve, reject) => {
@@ -62,15 +66,13 @@ function getConnectDetails(){
 }
 
 function sendCountSendIpList (client) {
-  getConnectDetails().then(allUserData => {
-    setUserCount()
-    .then(resp => {
-      genChann.get('userCount', (err, resp) => {
-        if (client.readyState === client.OPEN) {
-          client.send(JSON.stringify({count: resp, ipList: allUserData}, null))
-        }
-      })
-    });    
+  setUserCount()
+  .then(resp => {
+    genChann.get('userCount', (err, resp) => {
+      if (client.readyState === client.OPEN) {
+        client.send(JSON.stringify({count: resp, ipList: getAllUserData()}, null))
+      }
+    })
   });
 }
 
