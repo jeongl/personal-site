@@ -9,7 +9,7 @@ class SocketHandler extends Component {
   }
   componentDidMount(){
     var self = this;
-    const socket = new WebSocket('ws://localhost:3010');
+    const socket = new WebSocket('ws://jlim.site/socketserver');
     socket.onopen = function(){
       console.log('socket connection opened: ');
     }

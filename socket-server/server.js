@@ -81,7 +81,6 @@ wss.on('connection', function connection(ws, err) {
 
   ws.on('close', function close() {
     broadCast(clients => sendCountSendIpList(clients));
-    // genChann.srem('ipList', ws.upgradeReq.headers.host );
   });
 });
  
